@@ -1,5 +1,5 @@
 import React from 'react';
-import './Filter.css'
+
 function Filter({ setFilter }) {
   const handleFilterChange = (e) => {
     setFilter(e.target.value);
