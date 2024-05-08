@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function Edit({ task, updateTask, stopEditing }) {
   const [name, setName] = useState(task.name);
   const [description, setDescription] = useState(task.description);
-  const [status, setStatus] = useState(task.status);
+  const [status, setStatus] = useState(task.status  || 'Completed');
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -15,6 +15,12 @@ function Edit({ task, updateTask, stopEditing }) {
     };
     updateTask(task.id, updatedTask);
     stopEditing();
+  };
+
+  const getStatusStyle = () => {
+    return status === 'Completed'
+      ? { backgroundColor: 'green',color:'white' }
+      : { backgroundColor: 'red',color:'white' };
   };
 
   return (
@@ -38,20 +44,25 @@ function Edit({ task, updateTask, stopEditing }) {
       <span>Status</span>
       <select
         className="form-control mb-2"
+        style={getStatusStyle()}
         value={status}
         onChange={(e) => setStatus(e.target.value)}
       >
         <option value="Completed">Completed</option>
         <option value="Not Completed">Not Completed</option>
       </select>
-      <button type="submit" className="btn btn-success w-100">Save Changes</button>
-      <button
-        type="button"
-        className="btn btn-secondary w-100 mt-2"
-        onClick={stopEditing}
-      >
-        Cancel
-      </button>
+      
+    
+      <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+        <button type="submit" className="btn btn-success w-50">Save Changes</button>
+        <button
+          type="button"
+          className="btn btn-secondary w-50"
+          onClick={stopEditing}
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

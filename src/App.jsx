@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Create from './components/Create';
 import Read from './components/Read';
 import Filter from './components/Filter';
+import './App.css' 
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -32,7 +33,7 @@ function App() {
 
   return (
     <div className="container my-4">
-      <h1 className="text-center">My Todo </h1>
+      <h5 className="text-center">My Todo </h5>
       <Create addTask={addTask} />
       <Filter setFilter={setFilter} />
       <Read tasks={filteredTasks} deleteTask={deleteTask} updateTask={updateTask} />

@@ -14,25 +14,27 @@ function Create({ addTask }) {
   };
 
   return (
-    <form className="mb-4" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <input
-          type="text"
-          placeholder="Todo Name"
-          className="form-control mb-2"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Todo Description"
-          className="form-control mb-2"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <button type="submit" className="btn btn-primary w-100">Add Todo</button>
-      </div>
-    </form>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+    <input
+      type="text"
+      placeholder="Todo Name"
+      className="form-control"
+      style={{ flex: 1 }}
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+    />
+    <input
+      type="text"
+      placeholder="Todo Description"
+      className="form-control"
+      style={{ flex: 1 }}
+      value={description}
+      onChange={(e) => setDescription(e.target.value)}
+    />
+    <button type="submit" className="btn btn-success">Add Todo</button>
+  </form>
+  
+
   );
 }
 
